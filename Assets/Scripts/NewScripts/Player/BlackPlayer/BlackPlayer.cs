@@ -7,14 +7,13 @@ public class BlackPlayer : MonoBehaviour
     public float health = 20f;
     public float velocity = 1.5f;
 
-
     void OnEnable()
     {
-        transform.position=PlayerSwap.SetActivePos();
+        PlayerSwap.SetActivePos(transform);
     }
 
     void OnDisable()
     {
-        PlayerSwap.TakeTransformPos(transform.position);
+        PlayerSwap.TakeTransformPos(transform);
     }
 }

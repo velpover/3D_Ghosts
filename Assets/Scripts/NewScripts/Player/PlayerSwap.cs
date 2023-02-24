@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 [RequireComponent(typeof(ButtonInput))]
 public class PlayerSwap : MonoBehaviour
@@ -11,7 +13,9 @@ public class PlayerSwap : MonoBehaviour
 
     [SerializeField] private ButtonInput _buttonInput;
 
-    private static Vector3 _playerPos = Vector3.zero;
+    public static Vector3 _playerPos=Vector3.zero;
+    public static Quaternion _playerRot=Quaternion.identity;
+
 
     void Awake()
     {
@@ -33,15 +37,16 @@ public class PlayerSwap : MonoBehaviour
 
     private void SetActiveRedPlayer()
     {
-        _redPlayer.SetActive(true);
+  
         _yellowPlayer.SetActive(false);
         _blackPlayer.SetActive(false);
+        _redPlayer.SetActive(true);
     }
     private void SetActiveYellowPlayer()
     {
         _redPlayer.SetActive(false);
-        _yellowPlayer.SetActive(true);
         _blackPlayer.SetActive(false);
+        _yellowPlayer.SetActive(true);
     }
     private void SetActiveBlackPlayer()
     {
@@ -50,13 +55,18 @@ public class PlayerSwap : MonoBehaviour
         _blackPlayer.SetActive(true);
     }
 
-    public static Vector3 SetActivePos()
+    public static void SetActivePos(Transform player)
     {
-        return _playerPos;
+        player.position = _playerPos;
+        player.rotation = _playerRot;
     }
-    public static void TakeTransformPos(Vector3 target)
+    public static void TakeTransformPos(Transform target)
     {
-        _playerPos = target;
+        _playerPos = target.position;
+        _playerRot= target.rotation;
+
     }
+
+
 
 }
