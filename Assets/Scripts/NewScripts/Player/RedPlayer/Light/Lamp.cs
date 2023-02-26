@@ -19,38 +19,50 @@ namespace NewScene
         [SerializeField] private LightRange _lightRange;
         [SerializeField] private LightColor _lightColor;
         [SerializeField] private KeyInput _keyInput;
+        [SerializeField] private LightAttack _lightAttack;
 
 
         void Awake()
         {
             _keyInput.KeyEDown += OnColorChangeSpot;
+            _keyInput.KeyEDown += _lightAttack.LightSpotAttack;
+
             _keyInput.KeyEUP += OffColorChangeSpot;
+            _keyInput.KeyEUP += _lightAttack.StopAttack;
             
 
             _keyInput.KeyQDown += OnColorChangePoint;
             _keyInput.KeyQDown += GoToMaxRangePoint;
             _keyInput.KeyQDown += GoToMinRangeSpot;
+            _keyInput.KeyQDown += _lightAttack.LightAroundAttack;
+
             
 
             _keyInput.KeyQUP += OffColorChangePoint;
             _keyInput.KeyQUP += GoToMinRangePoint;
             _keyInput.KeyQUP += GoToMaxRangeSpot;
+            _keyInput.KeyQUP += _lightAttack.StopAttack;
             
 
         }
         void OnDestroy()
         {
             _keyInput.KeyEDown -= OnColorChangeSpot;
+            _keyInput.KeyEDown -= _lightAttack.LightSpotAttack;
+
             _keyInput.KeyEUP -= OffColorChangeSpot;
+            _keyInput.KeyEUP -= _lightAttack.StopAttack; 
 
 
             _keyInput.KeyQDown -= OnColorChangePoint;
             _keyInput.KeyQDown -= GoToMaxRangePoint;
             _keyInput.KeyQDown -= GoToMinRangeSpot;
+            _keyInput.KeyQDown -= _lightAttack.LightAroundAttack;
 
             _keyInput.KeyQUP -= OffColorChangePoint;
             _keyInput.KeyQUP -= GoToMinRangePoint;
             _keyInput.KeyQUP -= GoToMaxRangeSpot;
+            _keyInput.KeyQUP -= _lightAttack.StopAttack;
         }
 
 
@@ -65,7 +77,6 @@ namespace NewScene
 
         private void GoToMaxRangePoint() => _lightRange.OnRangeChange(_lightPoint,_maxPointRange);
         private void GoToMinRangePoint() => _lightRange.OffRangeChange(_lightPoint,_minPointRange);
-
 
 
     }
