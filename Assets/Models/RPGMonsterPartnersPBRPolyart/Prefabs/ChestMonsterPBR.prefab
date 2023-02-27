@@ -676,9 +676,7 @@ GameObject:
   - component: {fileID: 6860756994242704218}
   - component: {fileID: 6860756994249858238}
   - component: {fileID: 5372094297793200038}
-  - component: {fileID: 5024638892973079100}
   - component: {fileID: 5768029693072015084}
-  - component: {fileID: -5172420863685520367}
   m_Layer: 0
   m_Name: ChestMonsterPBR
   m_TagString: Untagged
@@ -706,7 +704,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6860756994249858238
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -723,7 +721,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &5372094297793200038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -737,20 +735,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0261748, z: 1}
   m_Center: {x: 0, y: 0.5130874, z: 0}
---- !u!114 &5024638892973079100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6860756994242604922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f416a82eb4e3c9843a86c65752669b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyHelth: 3
-  partSyst: {fileID: 5399146163363849387}
 --- !u!195 &5768029693072015084
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -773,18 +757,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-5172420863685520367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6860756994242604922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2e5d73299f8af44a8d55d6bb6fed0e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6860756994242604924
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,10 +962,5 @@ PrefabInstance:
 --- !u!4 &5399146163363849381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7725551175151311329, guid: 686a0171e4879fc428702128bf05713d, type: 3}
-  m_PrefabInstance: {fileID: 2439601935205662020}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5399146163363849387 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7725551175151311343, guid: 686a0171e4879fc428702128bf05713d, type: 3}
   m_PrefabInstance: {fileID: 2439601935205662020}
   m_PrefabAsset: {fileID: 0}

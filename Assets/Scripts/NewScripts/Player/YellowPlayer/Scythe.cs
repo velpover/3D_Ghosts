@@ -10,7 +10,7 @@ namespace NewScene
         [SerializeField] private Animator _animator;
         [SerializeField] private KeyInput _keyinput;
 
-        private float _damage = 20f;
+        private readonly float _damage = 20f;
         private bool _isAttack = false;
 
 
@@ -42,7 +42,7 @@ namespace NewScene
 
         private void OnCollisionEnter(Collision collisionInfo)
         {
-            if (_isAttack) TakeDamage(collisionInfo.gameObject, 20f);
+            if (_isAttack) TakeDamage(collisionInfo.gameObject, _damage);
         }
 
         private void TakeDamage(GameObject obj, float damage)
@@ -51,8 +51,7 @@ namespace NewScene
 
             if (enemy != null)
             {
-                Debug.Log("Hit");
-                enemy?.TakeHit(damage);
+                enemy.TakeHit(damage,false);
             }
         }
     }

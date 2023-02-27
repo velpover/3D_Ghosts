@@ -11,7 +11,6 @@ namespace NewScene
         [SerializeField] private Transform _staff;
 
         [SerializeField] private KeyInput _keyInput;
-        [SerializeField] private Rigidbody Rigidbody;
 
         private float _velocity = 12f;
         private Transform _cube;
@@ -24,7 +23,14 @@ namespace NewScene
             _keyInput.KeyEUP +=StopCor;
 
         }
-       
+
+        private void OnDisable()
+        {
+            _keyInput.KeyEDown -=StartCor;
+
+            _keyInput.KeyEUP -= StopCor;
+        }
+
         public void StartCor()
         {
             StartCoroutine(SkullMove());
