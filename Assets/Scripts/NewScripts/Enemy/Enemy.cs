@@ -9,15 +9,15 @@ namespace NewScene
         [SerializeField] private HealthSystem _healthSystem;
         [SerializeField] private EnemyAnimator _enemyAnimator;
         [SerializeField] private EnemyMoveTo _enemyMoveTo;
+        [SerializeField] private ParticleSystem _vfxBlood;
 
-
-        private float _lightHealth = 100f;
-        private float _collisonHealth = 100f;
+        private  float _health=100f;
 
         private void Awake()
         {
             _healthSystem.OnDiead += _enemyAnimator.Died;
             _healthSystem.OnDiead += _enemyMoveTo.StopMove;
+            _healthSystem.OnDiead += Diead;
 
         }
 
@@ -25,27 +25,30 @@ namespace NewScene
         {
             _healthSystem.OnDiead -= _enemyAnimator.Died;
             _healthSystem.OnDiead -= _enemyMoveTo.StopMove;
+            _healthSystem.OnDiead -= Diead;
         }
 
         public void TakeHit(float damage, bool type)
         {
-            if (type)
-            {
-                _healthSystem.TakeDamage(ref _lightHealth, damage);
-
-            }
-            else
-            {
-                _healthSystem.TakeDamage(ref _collisonHealth, damage);
-            }
-
+            
+            _healthSystem.TakeDamage(ref _health, damage);
+       
             _enemyAnimator.TakeHit();
+
+            _vfxBlood.Play();
 
         }
 
         public void MoveTo(Transform target)
         {
+            _enemyAnimator.Walk();
             _enemyMoveTo.GoToPlayer(target);
+        }
+
+        public void Diead()
+        {
+            _enemyAnimator.Died();
+            Destroy(gameObject,2f);
         }
 
     }

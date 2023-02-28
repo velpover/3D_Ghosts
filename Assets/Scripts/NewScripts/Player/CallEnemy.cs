@@ -14,10 +14,14 @@ namespace NewScene
         private LayerMask _layerEnemyMask = 1 << 7;
 
 
-        void Start()
+        void OnEnable()
         {
             StartCoroutine(CallEnemyPerSec());
             
+        }
+        private void OnDisable()
+        {
+            StopCoroutine(CallEnemyPerSec());
         }
 
         IEnumerator CallEnemyPerSec()
@@ -45,8 +49,9 @@ namespace NewScene
         {
             Enemy enemy = obj.GetComponent<Enemy>();
 
-            if(enemy != null)
+            if (enemy != null)
             {
+                
                 enemy?.MoveTo(transform);
             }
         }

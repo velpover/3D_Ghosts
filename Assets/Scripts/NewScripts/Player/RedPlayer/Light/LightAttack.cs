@@ -16,8 +16,8 @@ namespace NewScene
         private LayerMask _layerMaskEnemy = 1 << 7;
         private RaycastHit[] _hitsInfo = new RaycastHit[4];
 
-        private float _spotDamage = 4f;
-        private float _aroundDamage = 2f;
+        private float _spotDamage = 20f;
+        private float _aroundDamage = 10f;
         private float _maxDistance = 4f;
 
         private bool _spot = false;
@@ -57,7 +57,7 @@ namespace NewScene
 
         private void TakeDamage(GameObject obj, float damage)
         {
-            Enemy enemy = obj.GetComponent<Enemy>();
+            LightEnemy enemy = obj.GetComponent<LightEnemy>();
 
             if (enemy != null)
             {

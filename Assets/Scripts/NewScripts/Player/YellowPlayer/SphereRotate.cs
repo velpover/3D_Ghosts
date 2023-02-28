@@ -24,7 +24,7 @@ namespace NewScene
 
         private void TakeDamage(GameObject obj, float damage)
         {
-            Enemy enemy = obj.GetComponent<Enemy>();
+            ColliderEnemy enemy = obj.GetComponent<ColliderEnemy>();
 
             if (enemy != null)
             {

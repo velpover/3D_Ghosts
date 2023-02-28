@@ -20,7 +20,8 @@ namespace NewScene
 
                 StartCoroutine(MoveTo());
             }
-           
+
+            _target = target;
             _isMove = true;
             
         }
@@ -28,6 +29,7 @@ namespace NewScene
         public void StopMove()
         {
             _agent.isStopped = true;
+          
         }
 
         IEnumerator MoveTo()
@@ -35,7 +37,7 @@ namespace NewScene
             while (true)
             {
                 yield return new WaitForSeconds(0.5f);
-                _agent.destination = _target.position;
+                _agent.SetDestination(_target.position);
             }
         }
     }
