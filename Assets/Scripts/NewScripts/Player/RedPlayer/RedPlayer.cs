@@ -2,24 +2,45 @@
 using System;
 using UnityEngine;
 
-public class RedPlayer : Player
+namespace NewScene
 {
-    private float helth = 40f;
-    private float _velocity = 20f;
-
-    void OnEnable()
-    {   
-        PlayerSwap.SetActivePos(transform);
-    }
-
-    void OnDisable()
+    public class RedPlayer : Player
     {
-        PlayerSwap.TakeTransformPos(transform);
-    }
+        private float _health = 40f;
+        public override float Health { get => _health; set => _health = value; }
 
-    public override float SetVelocity()
-    {
-        return _velocity;
-    }
+        private float _velocity = 20f;
 
+        private void Awake()
+        {
+            healthSystem.OnDiead += Dead;
+        }
+
+        private void OnDestroy()
+        {
+            healthSystem.OnDiead -= Dead;
+        }
+
+        void OnEnable()
+        {
+            PlayerSwap.SetActivePos(transform);
+        }
+
+        void OnDisable()
+        {
+            PlayerSwap.TakeTransformPos(transform);
+        }
+
+        public override float SetVelocity()
+        {
+            return _velocity;
+        }
+
+        protected override void Dead()
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
 }
+

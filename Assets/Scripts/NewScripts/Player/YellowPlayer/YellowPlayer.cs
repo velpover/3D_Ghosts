@@ -5,7 +5,9 @@ namespace NewScene
 {
     public class YellowPlayer : Player
     {
-        private float helth = 100f;
+        private float _health = 100f;
+        public override float Health { get =>_health; set=>_health=value; }
+
         private float _velocity = 15f;
 
         [SerializeField] private KeyInput _keyInput;
@@ -16,20 +18,26 @@ namespace NewScene
             _keyInput.KeyQDown += UpVelocity;
             _keyInput.KeyQUP += DownVelocity;
 
+            healthSystem.OnDiead += Dead;
+
         }
 
         private void OnDestroy()
         {
             _keyInput.KeyQDown -= UpVelocity;
             _keyInput.KeyQUP -= DownVelocity;
+
+            healthSystem.OnDiead -= Dead;
         }
         void OnEnable()
         {
+            isActive = true;
             PlayerSwap.SetActivePos(transform);
         }
 
         void OnDisable()
         {
+            isActive = false;
             PlayerSwap.TakeTransformPos(transform);
         }
 
@@ -48,6 +56,11 @@ namespace NewScene
         {
             _velocity = 15f;
             _playerMove.SetVelocity();
+        }
+
+        protected override void Dead()
+        {
+            gameObject.SetActive(false);
         }
     } 
 }

@@ -2,23 +2,44 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackPlayer : Player
+namespace NewScene
 {
-    private float helth = 20f;
-    private float _velocity = 25f;
-
-    void OnEnable()
+    public class BlackPlayer : Player
     {
-        PlayerSwap.SetActivePos(transform);
+        private float _health = 20f;
+        public override float Health { get => _health; set => _health = value; }
+
+        private float _velocity = 25f;
+
+        private void Awake()
+        {
+            healthSystem.OnDiead += Dead;
+        }
+
+        private void OnDestroy()
+        {
+            healthSystem.OnDiead -= Dead;
+        }
+
+        void OnEnable()
+        {
+            PlayerSwap.SetActivePos(transform);
+        }
+
+        void OnDisable()
+        {
+            PlayerSwap.TakeTransformPos(transform);
+        }
+
+        public override float SetVelocity()
+        {
+            return _velocity;
+        }
+
+        protected override void Dead()
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-    void OnDisable()
-    {
-        PlayerSwap.TakeTransformPos(transform);
-    }
-
-    public override float SetVelocity()
-    {
-        return _velocity;
-    }
 }

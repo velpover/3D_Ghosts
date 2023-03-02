@@ -16,6 +16,7 @@ namespace NewScene
 
         private  float _health=100f;
         protected virtual float Amount { get => 5f;}
+        public  virtual float _attackDamage { get => 10f; }
 
         private void Awake()
         {
