@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-public class RedPlayer : MonoBehaviour
+public class RedPlayer : Player
 {
-    public float helth = 50f;
-    public float _velocity = 1f;
+    private float helth = 40f;
+    private float _velocity = 20f;
 
     void OnEnable()
     {   
@@ -15,6 +15,11 @@ public class RedPlayer : MonoBehaviour
     void OnDisable()
     {
         PlayerSwap.TakeTransformPos(transform);
+    }
+
+    public override float SetVelocity()
+    {
+        return _velocity;
     }
 
 }

@@ -12,21 +12,22 @@ namespace NewScene
         private float _inputX;
         private float _inputY;
         private float _rotateY;
-        private float _velocity = 20f;
+        private float _velocity;
         private float _rotateVelocity = 0.2f;
 
+        private Player _player;
         private IGameInput _gameInput;
 
 
         void Start()
         {
             _gameInput = InputManager.Instance.GameInput;
-
+            _player = gameObject.GetComponent<Player>();
+            SetVelocity();
         }
 
         void Update()
         {
-
 
             _inputX = _gameInput.VerticalInput;
             _inputY = _gameInput.HorizontalInput;
@@ -54,6 +55,10 @@ namespace NewScene
                 transform.Rotate(Vector3.up, _rotateY );
             }
 
+        }
+        public void SetVelocity()
+        {
+            _velocity = _player.SetVelocity();
         }
 
     }

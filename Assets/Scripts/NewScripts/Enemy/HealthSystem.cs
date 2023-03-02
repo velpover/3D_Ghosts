@@ -12,7 +12,6 @@ namespace NewScene
         {
             health -= damage;
 
-            Debug.Log("healt" + health);
             if (health <= 0)
             {
                 OnDiead?.Invoke();

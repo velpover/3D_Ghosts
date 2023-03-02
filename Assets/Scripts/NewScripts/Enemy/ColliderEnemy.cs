@@ -6,7 +6,9 @@ namespace NewScene
 {
     public class ColliderEnemy : Enemy
     {
-
+        protected override float Amount { get => 10f; } 
+       
+            
     }
 }
 

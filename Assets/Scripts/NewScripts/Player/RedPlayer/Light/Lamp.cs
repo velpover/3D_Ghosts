@@ -22,7 +22,7 @@ namespace NewScene
         [SerializeField] private LightAttack _lightAttack;
 
 
-        void Awake()
+        void OnEnable()
         {
             _keyInput.KeyEDown += OnColorChangeSpot;
             _keyInput.KeyEDown += _lightAttack.LightSpotAttack;
@@ -45,7 +45,7 @@ namespace NewScene
             
 
         }
-        void OnDestroy()
+        void OnDisable()
         {
             _keyInput.KeyEDown -= OnColorChangeSpot;
             _keyInput.KeyEDown -= _lightAttack.LightSpotAttack;

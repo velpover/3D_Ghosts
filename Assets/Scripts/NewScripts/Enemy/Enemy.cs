@@ -10,8 +10,12 @@ namespace NewScene
         [SerializeField] private EnemyAnimator _enemyAnimator;
         [SerializeField] private EnemyMoveTo _enemyMoveTo;
         [SerializeField] private ParticleSystem _vfxBlood;
+        [SerializeField] private EnemyAttack _enemyAttack;
+
+        private Collider _col;
 
         private  float _health=100f;
+        protected virtual float Amount { get => 5f;}
 
         private void Awake()
         {
@@ -19,6 +23,9 @@ namespace NewScene
             _healthSystem.OnDiead += _enemyMoveTo.StopMove;
             _healthSystem.OnDiead += Diead;
 
+            _enemyAttack.OnAttack += Attack;
+
+            _col = GetComponent<Collider>();
         }
 
         private void OnDestroy()
@@ -39,15 +46,24 @@ namespace NewScene
 
         }
 
+        public void Attack()
+        {
+            _enemyAnimator.Attack();
+        }
         public void MoveTo(Transform target)
         {
             _enemyAnimator.Walk();
+
             _enemyMoveTo.GoToPlayer(target);
         }
 
-        public void Diead()
+        private void Diead()
         {
+            Score.PlusScore(Amount);
+
             _enemyAnimator.Died();
+
+            Destroy(_col);
             Destroy(gameObject,2f);
         }
 

@@ -51,7 +51,6 @@ namespace NewScene
 
             if (enemy != null)
             {
-                Debug.Log("hit");
                 enemy.TakeHit(damage,false);
             }
         }

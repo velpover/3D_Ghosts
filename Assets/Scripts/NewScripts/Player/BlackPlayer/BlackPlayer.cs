@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackPlayer : MonoBehaviour
+public class BlackPlayer : Player
 {
-    public float health = 20f;
-    public float velocity = 1.5f;
+    private float helth = 20f;
+    private float _velocity = 25f;
 
     void OnEnable()
     {
@@ -15,5 +15,10 @@ public class BlackPlayer : MonoBehaviour
     void OnDisable()
     {
         PlayerSwap.TakeTransformPos(transform);
+    }
+
+    public override float SetVelocity()
+    {
+        return _velocity;
     }
 }
