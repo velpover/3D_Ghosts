@@ -6,10 +6,30 @@ namespace NewScene
 {
     public class BlackPlayer : Player
     {
-        private float _health = 20f;
-        public override float Health { get => _health; set => _health = value; }
+        private float _health = 21f;
+        private float _maxHealth = 21f;
 
-        private float _velocity = 25f;
+        [SerializeField] HealthBar _healthBar;
+        private float _convertHpBar = 0.05f;
+        public override float Health
+        {
+            get => _health;
+
+            set
+            {
+                if (_health <= _maxHealth)
+                {
+                    _health = value;
+                }
+                else
+                {
+                    _health = _maxHealth;
+                    _healthBar.ChangeBar(_health * _convertHpBar);
+                }
+            }
+        }
+
+        private float _velocity = 20f;
 
         private void Awake()
         {
@@ -24,6 +44,8 @@ namespace NewScene
         void OnEnable()
         {
             PlayerSwap.SetActivePos(transform);
+
+            _healthBar.ChangeBar(_health * _convertHpBar);
         }
 
         void OnDisable()

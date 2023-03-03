@@ -8,8 +8,6 @@ namespace NewScene
     public abstract class Player : MonoBehaviour
     {
         [SerializeField] protected HealthSystem healthSystem;
-
-        protected bool isActive;
         public abstract float Health { get; set; }
         public abstract float SetVelocity();
 

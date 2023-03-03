@@ -8,6 +8,7 @@ namespace NewScene
     public class HealthSystem : MonoBehaviour
     {
         public event Action OnDiead;
+
         public void TakeDamage(ref float health, float damage)
         {
             health -= damage;
@@ -16,6 +17,11 @@ namespace NewScene
             {
                 OnDiead?.Invoke();
             }
+        }
+
+        public float Heal(float health,float point)
+        {
+            return health + point; 
         }
     }
 

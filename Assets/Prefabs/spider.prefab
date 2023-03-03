@@ -5118,6 +5118,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-2024848338712301019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951331734304464033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fba82f1fb6f224fb3d112e06505c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacker: {fileID: 1057395755}
 --- !u!114 &1057395755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5134,6 +5147,7 @@ MonoBehaviour:
   _enemyAnimator: {fileID: 1057395758}
   _enemyMoveTo: {fileID: 1057395757}
   _vfxBlood: {fileID: 1057395753}
+  _enemyAttack: {fileID: -2024848338712301019}
 --- !u!114 &1057395756
 MonoBehaviour:
   m_ObjectHideFlags: 0
